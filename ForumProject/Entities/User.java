@@ -1,18 +1,32 @@
 package Entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-/*TODO: Add JPA!*/
+@Entity
+@Table(name = "user")
 public class User {
 	
 
-	//Each User should have a unique id and Username
-	private static long UserID; 
+	//Each User should have a unique id and Username and Email
+	
+	@Id
+	@GeneratedValue
+	private long UserID;
+	
+	@Column(unique = true, nullable = false)
 	private String userName;
+	
+	@Column(unique = true, nullable = false)
+	private String emailAddress;
 	
 	//Those variables should not be unique
 	private String firstName;
 	private String lastName;
-	private String emailAddress;
+
 	
 
 	public User(String userName, String firstName, String lastName, String emailAddress) {
@@ -25,15 +39,14 @@ public class User {
 	
 	/*Get and Set of useID
 	 * TODO: Remove those and put a serial function*/
-	public User(long id) {
-		this.setUserID(id);
+	public User() {
 	}
 	
-	public static long getUserID() {
-		return UserID;
+	public long getUserID() {
+		return this.UserID;
 	}
 	
-	public static void setUserID(long userID) {
+	public void setUserID(long userID) {
 		UserID = userID;
 	}
 	//--------------------------------------^REMOVE^
