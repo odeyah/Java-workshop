@@ -1,15 +1,21 @@
 package Entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable{
 	
+
+
+	private static final long serialVersionUID = 1L;
 
 	//Each User should have a unique id and Username and Email
 	
@@ -17,16 +23,20 @@ public class User {
 	@GeneratedValue
 	private long UserID;
 	
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = false, length = 15)
 	private String userName;
 	
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = false, length = 60)
 	private String emailAddress;
 	
 	//Those variables should not be unique
+	@Column(nullable = false, length = 60)
+	private String password;
+	@Column(nullable = true, length = 15)
 	private String firstName;
+	@Column(nullable = true, length = 15)
 	private String lastName;
-
+	boolean isBlocked = false;
 	
 
 	public User(String userName, String firstName, String lastName, String emailAddress) {
@@ -46,9 +56,6 @@ public class User {
 		return this.UserID;
 	}
 	
-	public void setUserID(long userID) {
-		UserID = userID;
-	}
 	//--------------------------------------^REMOVE^
 
 
@@ -109,5 +116,20 @@ public class User {
 		this.emailAddress=emailAddress;
 	}
 
+	/**
+	 * Set User's password.
+	 * @param String password to set*/
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	/**
+	 * Get User's password
+	 * @return String*/
+	public String getPassword() {
+		return this.password;
+		
+	}
+	
 	
 }
