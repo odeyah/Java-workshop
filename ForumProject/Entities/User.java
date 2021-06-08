@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "user")
 public class User implements Serializable{
@@ -55,8 +56,7 @@ public class User implements Serializable{
 	public long getUserID() {
 		return this.UserID;
 	}
-	
-	//--------------------------------------^REMOVE^
+
 
 
 	/**
@@ -130,6 +130,23 @@ public class User implements Serializable{
 		return this.password;
 		
 	}
+	public void setIsBlocked(boolean isBlocked) {
+		this.isBlocked = isBlocked;
+	}
+	public Boolean isBlocked() {
+		return this.isBlocked();
+	}
 	
+	@Override
+	public String toString() {
+		String userInfo = "";
+		userInfo = "UserID:\t" + this.getUserID() + "\n";
+		userInfo = "userName:\t" + this.getUserName() + "\n";
+		userInfo = "emailAddress:\t" + this.getEmailAddress() +"\n";
+		userInfo = "firstName:\t" + this.getFirstName() + "\n";
+		userInfo = "lastName:\t" + this.getLastName() + "\n";
+		userInfo = "isBlocked:\t" + this.isBlocked() + "\n";
+		return userInfo;
+	}
 	
 }
