@@ -67,6 +67,7 @@ public class User {
 	public void SetActive() {
 		this.isActive = true;
 	}
+
 	
 	public long getId() {
 		return id;

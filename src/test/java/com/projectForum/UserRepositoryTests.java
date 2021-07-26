@@ -28,7 +28,7 @@ public class UserRepositoryTests {
 	@Test
 	public void testCreateUser() {
 		User user = new User();
-		user.setUsername("Error2");
+		user.setUsername("Guy950");
 		user.setFirstName("Guy");
 		user.setLastName("Gips");
 		user.setEmail("Guy2@guy.com");
@@ -47,6 +47,21 @@ public class UserRepositoryTests {
 		repo.deleteAll();
 	}
 	
+	@Test
+	public void testFindUserByEmail() {
+		String email = "test@test.com";
+		User user = repo.findByEmail(email);
+		
+		assertThat(user).isNotNull();
+	}
+	
+	@Test
+	public void testFindUserByUsername() {
+		String username = "Guy950";
+		User user = repo.findByUsername(username);
+		
+		assertThat(user).isNotNull();
+	}
 
 	
 }
