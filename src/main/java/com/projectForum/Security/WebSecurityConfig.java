@@ -26,20 +26,23 @@ import com.projectForum.user.CustomUserDetailsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private DataSource datasource;
+	private DataSource dataSource;
 	
-	@Bean//creating the bean - spring framework automaticlly inject instance for autowired view
+	
+	//creating the bean - spring framework automaticlly inject instance for autowired view
+	@Bean
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService();
     }
 	
-	@Bean //encoder for password -strong and better 
+	//encoder for password -strong and better
+	@Bean 
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 	//TODO GET RID OF THIS
 	//Video 1:09:14 - watch again
-	@Bean 
+	@Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
@@ -59,13 +62,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/users").authenticated()
+            .antMatchers("/list_users").authenticated()
             .anyRequest().permitAll()
             .and()
             .formLogin()
-                .usernameParameter("email")
-                .defaultSuccessUrl("/users")
-                .permitAll()
+            .usernameParameter("email")
+            .defaultSuccessUrl("/list_users")
+            .permitAll()
             .and()
             .logout().logoutSuccessUrl("/").permitAll();
     }

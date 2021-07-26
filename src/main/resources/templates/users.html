@@ -9,6 +9,17 @@
 </head>
 <body>
 	<div class="container text-center">
+	
+	    <div>
+        <form th:action="@{/logout}" method="post">
+            <p>
+                <b>[[${#request.userPrincipal.principal.fullName}]]</b> ברוך הבא  
+            </p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+	
+	
 		<div>
 			<h1>:רשימת כל המשתמשים</h1>
 		</div>
@@ -17,14 +28,16 @@
 				<thead class=thead-dark>
 						<tr>
 							<th>מזהה משתמש</th>
+							<th>שם משתמש</th>
 							<th>Email</th>
 							<th>שם פרטי</th>
 							<th>שם משפחה</th>
 						</tr>
 				</thead>
 				<tbody>
-					<tr th:each = "user: ${listUsers}">
+					<tr th:each = "user: ${listofUsers}">
 						<td th:text = "${user.id}">מזהה משתמש</td>
+						<td th:text = "${user.username}">מזהה משתמש</td>
 						<td th:text = "${user.email}">Email</td>
 						<td th:text = "${user.firstName}">שם פרטי</td>
 						<td th:text = "${user.lastName}">שם משפחה</td>

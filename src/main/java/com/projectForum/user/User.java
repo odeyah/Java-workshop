@@ -54,7 +54,6 @@ public class User {
 	//TODO: Add topics list
 	//TODO: Add private messages list
 	
-
 	
 	public boolean isActive() {
 		return isActive;
@@ -131,7 +130,6 @@ public class User {
 		this.password = password;
 	}
 	
-	//TEMP
 
 	public String getUsername() {
 		return username;
@@ -145,48 +143,7 @@ public class User {
 		this.isActive = isActive;
 	}
 	
-/*
-	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO SOLVE THIS
-		return null;
-	}
 
-	@Override
-	public String getPassword() {
-		return this.password;
-	}
-
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		//TODO: Define this methdos so admins can not be expired.
-		return false;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		//TODO: Define this methdos so admins can not be locked.
-		return false;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return false;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return this.isActive;
-	}
-*/
 	
 	
 }
