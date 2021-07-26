@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> <!-- Declaring  XML using-->
+<head>
+    <meta charset="UTF-8">
+    <title>דף הבית</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+		<div>
+			<h1>!דף הבית</h1>
+			<h2>?האם זה כותב הפוך גם בדף</h2>
+		</div>
+	</div>
+		
+	<div class="container text-right">
+		<!-- links to other pages -->
+		<div>
+			<h3> <a th:href="@{/register}">הרשמה</a></h3>
+		</div>
+		
+	</div>
+</body>
+</html>
