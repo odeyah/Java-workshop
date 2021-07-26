@@ -8,6 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class CustomUserDetails implements UserDetails {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private User user;
 	
 	
@@ -18,7 +22,6 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		//solve this 
 		return null;
 	}
 
@@ -35,13 +38,13 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO: change this for admins
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO: change this for admins
-		return false;
+		return true;
 	}
 
 	@Override

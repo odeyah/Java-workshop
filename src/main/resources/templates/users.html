@@ -23,7 +23,7 @@
 						</tr>
 				</thead>
 				<tbody>
-					<tr th:each = "user: &{ListUsers}">
+					<tr th:each = "user: ${listUsers}">
 						<td th:text = "${user.id}">מזהה משתמש</td>
 						<td th:text = "${user.email}">Email</td>
 						<td th:text = "${user.firstName}">שם פרטי</td>

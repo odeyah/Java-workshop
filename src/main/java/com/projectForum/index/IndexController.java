@@ -1,5 +1,7 @@
 package com.projectForum.index;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +46,17 @@ public class IndexController {
 	}
 	
 	//Users page
+	//@GetMapping("/list_users")
+	//public String viewUserList() {
+	//	return "users";
+	//}
+	
 	@GetMapping("/list_users")
-	public String viewUserList() {
-		return "users";
+	public String listUsers(Model model) {
+	    List<User> listUsers = userReop.findAll();
+	    model.addAttribute("listUsers", listUsers);
+	     
+	    return "users";
 	}
 	
 }
