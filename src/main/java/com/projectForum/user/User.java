@@ -2,6 +2,7 @@ package com.projectForum.user;
 
 import java.sql.Date;
 //import java.util.Collection;
+import java.time.LocalDateTime;
 
 //import javax.management.relation.Role; //TODO: SOLVE THIS
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
@@ -46,8 +49,8 @@ public class User {
 	@Column(nullable = false, length = 4)
 	private boolean isActive = true;
 	
-	private Date joiningDate;
-	private Date lastLogin;
+	private LocalDateTime joiningDate;
+	private LocalDateTime lastLogin;
 	
 	//TODO: ADD ROLE OPTION - FOR ADMINS
 	//TODO: Add forum messages list
@@ -100,20 +103,21 @@ public class User {
 		this.lastName = lastName;
 	}
 	
-	public Date getJoiningDate() {
+	public LocalDateTime getJoiningDate() {
 		return joiningDate;
 	}
 	
-	public void setJoiningDate(Date joiningDate) {
+	public void setJoiningDate(LocalDateTime joiningDate) {
 		this.joiningDate = joiningDate;
+		this.setLastLogin(joiningDate);
 	}
 	
 	/** Return when last time user been login.*/
-	public Date getLastLogin() {
+	public LocalDateTime getLastLogin() {
 		return lastLogin;
 	}
 	
-	public void setLastLogin(Date lastLogin) {
+	public void setLastLogin(LocalDateTime lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 	

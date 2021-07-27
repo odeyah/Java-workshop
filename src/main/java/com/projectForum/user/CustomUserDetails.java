@@ -8,9 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class CustomUserDetails implements UserDetails {
 
 	
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private User user;
     
@@ -54,6 +52,6 @@ public class CustomUserDetails implements UserDetails {
     }
      
     public String getFullName() {
-        return user.getFirstName() + " " + user.getLastName();
+        return user.getUsername();
     }
 }

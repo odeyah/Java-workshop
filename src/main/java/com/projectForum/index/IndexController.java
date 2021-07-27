@@ -9,7 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectForum.user.User;
 import com.projectForum.user.UserRepository;
@@ -31,30 +33,22 @@ public class IndexController {
 		return "index";
 	}
 	
-	//register procces
-	//Sending user to register page
-	//We are using Model to send user object
-	@GetMapping("/register")
-	public String showRegisterForm(Model model) {
-		model.addAttribute("user", new User());
-		return "register_form";
-	}
-	
-	@PostMapping("/process_register")
-	public String processRegistration(User user) {
-	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	    String encodedPassword = passwordEncoder.encode(user.getPassword());
-	    user.setPassword(encodedPassword);
-		userReop.save(user);
-		return "register_success";
-	}
-	
+	/*
+	 * This method create an page of all users.*/
 	@GetMapping("/list_users")
 	public String listofUsers(Model model) {
 	    List<User> listofUsers = userReop.findAll();
 	    model.addAttribute("listofUsers", listofUsers);
 	     
 	    return "users";
+	}
+	
+	/**
+	 * This methode will delete a user in users list by button active*/
+	@GetMapping("/deleteUser")
+	public String deleteUser(@RequestParam(name="username") String username) {
+		userReop.delete(userReop.findByUsername(username));
+		return "redirect:/list_users";
 	}
 	
 }
