@@ -17,13 +17,10 @@ import javax.validation.constraints.NotBlank;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
 
-
 @Entity
 @Table(name =  "user")
 //public class User implements UserDetails{
 public class User {
-	
-
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,10 +34,10 @@ public class User {
 	@Column (unique = true, nullable = false, length = 64)
 	private String email;
 	
-	@Column (name="First_name" , nullable = false , length = 15)
+	@Column (name="First_name", nullable = false, length = 15)
 	private String firstName;
 	
-	@Column (name="Last_name" ,nullable = false,  length = 15)
+	@Column (name="Last_name", nullable = false, length = 15)
 	private String lastName;
 	
 	@Column(nullable = false, length = 60)
@@ -57,7 +54,6 @@ public class User {
 	//TODO: Add topics list
 	//TODO: Add private messages list
 	
-	
 	public boolean isActive() {
 		return isActive;
 	}
@@ -70,6 +66,9 @@ public class User {
 		this.isActive = true;
 	}
 
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
 	
 	public long getId() {
 		return id;
@@ -134,7 +133,6 @@ public class User {
 		this.password = password;
 	}
 	
-
 	public String getUsername() {
 		return username;
 	}
@@ -142,12 +140,4 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-	
-
-	
-	
 }

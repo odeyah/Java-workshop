@@ -10,9 +10,8 @@ public class CustomUserDetailsService  implements UserDetailsService {
 	@Autowired
 	private UserRepository repo;
 	
-	
 	/**
-	 * Find User by username*/
+	 * Find User by Username */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = repo.findByEmail(username);
@@ -21,8 +20,8 @@ public class CustomUserDetailsService  implements UserDetailsService {
 		return new CustomUserDetails(user);
 	}
 	
-	/**
-	 * Find User by Email*/
+	/** 
+	 * Find User by Email */
 	public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
 		User user = repo.findByEmail(email);
 		if(user == null) {

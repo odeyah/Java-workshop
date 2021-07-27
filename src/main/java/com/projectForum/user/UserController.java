@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value ="/user")
 public class UserController {
 
-	//Video: 30:33<-----------------DELETE THIS
+	// Video: 30:33<-----------------DELETE THIS
 	
-	//TODO: Add all action with user: (Crud actions) CREATE, READ, UPDATE, DELETE
-	//Maybe should I make a separated class for register users? (CREATE)
+	// TODO: Add all action with user: (Crud actions) CREATE, READ, UPDATE, DELETE
+	// Maybe should I make a separated class for register users? (CREATE)
 	
 	private UserRepository userRepository;
-	//Returns all Users in database
-	
+	// Returns all Users in database
 }

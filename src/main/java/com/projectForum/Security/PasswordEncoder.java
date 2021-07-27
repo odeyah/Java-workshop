@@ -3,7 +3,7 @@ package com.projectForum.Security;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
-//THIS IS FOR TESTING FOR NOW
+// THIS IS FOR TESTING FOR NOW
 public class PasswordEncoder {
 	public static void main(String[] args) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

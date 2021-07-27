@@ -19,11 +19,11 @@ import com.projectForum.user.UserRepository;
 @Controller
 public class IndexController {
 	
-	//Autowired - Spring framework automaticlly create a new instance of user repository and inject it into this class
+	//Autowired - Spring framework automatically create a new instance of user repository and inject it into this class
 	@Autowired
 	private UserRepository userReop;
 	
-	//Defining the homepage of our application.
+	//Defining the home page of our application.
 	@GetMapping("")
 	public String viewHomePage() {
 		return "index";
@@ -34,7 +34,7 @@ public class IndexController {
 	}
 	
 	/*
-	 * This method create an page of all users.*/
+	 * This method creates a page of all users.*/
 	@GetMapping("/list_users")
 	public String listofUsers(Model model) {
 	    List<User> listofUsers = userReop.findAll();
@@ -44,7 +44,7 @@ public class IndexController {
 	}
 	
 	/**
-	 * This methode will delete a user in users list by button active*/
+	 * This method will delete a user in users list by button active */
 	@GetMapping("/deleteUser")
 	public String deleteUser(@RequestParam(name="username") String username) {
 		userReop.delete(userReop.findByUsername(username));

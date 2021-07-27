@@ -16,23 +16,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
- * This Class manages all User registration process to the database and the web application*/
+ * This Class manages all User registration process to the database and the web application */
 
 @Controller
 public class RegisterController {
 	
-	//@Autowired
+	// @Autowired
 	private UserRepository userRepo;
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	public RegisterController(UserRepository userRepository , PasswordEncoder passwordEncoder ) {
+	public RegisterController(UserRepository userRepository, PasswordEncoder passwordEncoder ) {
 		this.userRepo = userRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
 	
 	
-	/**Mapping to register page
+	/** Mapping to register page
 	 * @provides Model of user object*/
 	@GetMapping("/register")
 	public String displayRegisterPage(@ModelAttribute User user, Model model) {
@@ -43,24 +43,30 @@ public class RegisterController {
 	/**
 	 * Creating new user in database. If success then moving to completed page*/
 	
-	//TODO: Sovle the issue with exists users. YOU HAVE TO NOTIFY THE USER IF ACCOUNT ALREADY EXIST.
+	//TODO: Solve the issue with existing users. YOU HAVE TO NOTIFY THE USER IF ACCOUNT ALREADY EXIST.
 	@PostMapping("/register")
 	public String processRegistration(@Valid User user, BindingResult bindingResult) {
 		if(!bindingResult.hasErrors()) {
-			//Checking if Email is exist in database
-			if (userRepo.findByEmail(user.getEmail()) == null){
-				//Checking if username is exist in database
+			
+			// Checking if Email is exist in database
+			if (userRepo.findByEmail(user.getEmail()) == null) {
+				
+				// Checking if username exists in database
 				if(userRepo.findByUsername(user.getUsername()) == null) {
 					user.setPassword(passwordEncoder.encode(user.getPassword()));
 					user.setJoiningDate(LocalDateTime.now());
 					userRepo.save(user);	
-					}
-				else {//Username already exists.
+				}
+				
+				// Username already exists.
+				else { 
 					bindingResult.addError(new FieldError("user", "username", "Username already exists, Please try new username."));
 					return "redirect:/register";
-					}
 				}
-			else {//Email already exists
+			}
+			
+			// Email already exists
+			else {
 				bindingResult.addError(new FieldError("user", "email", "Email already exists, Please try new Email."));
 				return "redirect:/register";
 			}
@@ -68,7 +74,4 @@ public class RegisterController {
 
 		return "register_success";
 	}
-	
-
-
 }
